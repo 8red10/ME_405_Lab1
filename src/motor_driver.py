@@ -28,7 +28,7 @@ class MotorDriver:
         @param timer  ->    Timer object for PWM. Should just be an integer representing the timer number.
         '''
         # indicate the initialization
-        print('Creating motor driver...', end='')
+        # print('Creating motor driver...', end='')
         # set up the pins
         self.en_pin = pyb.Pin(en_pin, pyb.Pin.OUT_OD, pyb.Pin.PULL_UP)
         self.in1pin = pyb.Pin(in1pin, pyb.Pin.OUT_PP)
@@ -43,7 +43,7 @@ class MotorDriver:
         self.ch1.pulse_width_percent(0)
         self.ch2.pulse_width_percent(0)
         # indicate done creating the motor
-        print(' done.')
+        # print(' done.')
     
     def set_duty_cycle (self, level):
         '''!
@@ -60,17 +60,17 @@ class MotorDriver:
         elif level < -100:
             level = -100
         # indicate the level the motor is set to
-        print(f'Setting duty cycle to {level}%.')
+        # print(f'Setting duty cycle to {level}%.')
         # turn on channel 1 for positive
         if level >= 0:
             self.ch2.pulse_width_percent(0)
             self.ch1.pulse_width_percent(level)
-            print('setting positive level')
+            # print('setting positive level')
         # turn on channel 2 for negative
         elif level < 0:
             self.ch1.pulse_width_percent(0)
             self.ch2.pulse_width_percent(abs(level))
-            print('setting negative level')
+            # print('setting negative level')
 
 def main():
     '''!
